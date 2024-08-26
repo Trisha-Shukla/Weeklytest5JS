@@ -5,8 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            margin: 0 50px;
+            border: 1px solid black;
+            border-bottom-left-radius:15px; 
+            border-bottom-right-radius:15px; 
+        }
+        .header-sec1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-sec2{
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="header-sec1">Book</div>
+        <div class="header-sec2"><div class="toggle"><button>Sign up</button></div></div>
+    </header>
+    <section>
+    <nav>
+        <ul class="sidebar-1">
+            <li>All Categories</li>
+        <!-- <li>books content</li>
+        
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>
+        <li>books content</li>-->
+    </ul> 
+        <div class="sidebar-2"></div>
+    </nav>
+    <main>
+        <h1>Best Seller Book</h1>
+        <div class="book-sec-1">
+            <h5>Advice How-To and Miscellaneous</h5>
+            <div class="book-wrap">
+                <div><img src="" alt="">
+                <h4>Atomic Habits</h4>
+            <h6>James Clear</h6></div>
+            </div>
+
+        </div>
+        <button>See More</button>
+    </main>
+</section>
     <script src="./script.js"></script>
 </body>
 </html>
