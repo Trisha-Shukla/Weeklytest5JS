@@ -29,6 +29,53 @@
             justify-content: flex-end;
             padding: 20px;
         }
+        section{
+            display: grid;
+            /* width: 100vw; */
+            grid-template-columns: 400px 1fr;
+            padding: 2rem;
+        }
+        nav{
+            width: 40%;
+            width: 400px;
+        }
+        main{
+            max-width: 1200px;
+        }
+        /* .book-section{
+            overflow-x: auto;
+            white-space: nowrap;
+        } */
+        .book-wrap{
+            display: flex;
+            gap: 45px;
+        }
+        .category-section{
+            display: flex;flex-direction: column;
+            gap: 40px;
+        }
+        .category-section>button{
+            align-self: flex-end;
+        }
+        .book-arrange{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: auto;
+            width: 160px;
+        }
+        .book-arrange>h6{
+            white-space: nowrap;      /* Prevents text from wrapping to the next line */
+    overflow: hidden;         /* Hides the overflow content */
+    text-overflow: ellipsis;  /* Adds an ellipsis ("...") to indicate the text is cut off */
+    max-width: 100%;          /* Ensure it respects the container's width */
+    display: block;           /* Ensures it's treated as a block element */
+        }
+        .book-arrange>img{
+            width: 160px;
+            height: 220px;
+           
+        }
     </style>
 </head>
 <body>
@@ -40,42 +87,14 @@
     <nav>
         <ul class="sidebar-1">
             <li>All Categories</li>
-        <!-- <li>books content</li>
         
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>
-        <li>books content</li>-->
     </ul> 
         <div class="sidebar-2"></div>
     </nav>
     <main>
         <h1>Best Seller Book</h1>
-        <div class="book-sec-1">
-            <!-- <h5>Advice How-To and Miscellaneous</h5>
-            <div class="book-wrap">
-                <div><img src="" alt="">
-                <h4>Atomic Habits</h4>
-            <h6>James Clear</h6></div>
-            </div>
-            <button>See More</button> -->
+        <br>
+        <div class="book-section">
         </div>
         
     </main>

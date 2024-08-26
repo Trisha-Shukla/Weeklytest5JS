@@ -45,7 +45,7 @@ async function updateMainSec() {
         `;
 
         // Append the category section to the main container
-        document.querySelector(".book-sec-1").appendChild(categorySection);
+        document.querySelector(".book-section").appendChild(categorySection);
 
         let bookArrange = element.books;
         console.log(bookArrange);
@@ -58,7 +58,7 @@ async function updateMainSec() {
             bookWrap.innerHTML += `
                 <div class="book-arrange">
                     <img src="${ele.book_image}" alt="">
-                    <h4>${ele.title}</h4>
+                    <h6>${ele.title}</h6>
                     <h6>${ele.author}</h6>
                 </div>
             `;
