@@ -55,9 +55,14 @@ async function updateMainSec() {
 
         // Add books to the specific .book-wrap
         bookArrange.forEach(ele => {
+            let args=ele;
+            console.log(args);
+            
+            
             bookWrap.innerHTML += `
                 <div class="book-arrange">
-                    <img src="${ele.book_image}" alt="">
+            
+                    <img src="${ele.book_image}" onclick="showDetails('${ele.title}', '${ele.author}', '${ele.book_image}')">
                     <h6>${ele.title}</h6>
                     <h6>${ele.author}</h6>
                 </div>
@@ -67,24 +72,17 @@ async function updateMainSec() {
 }
 updateMainSec();
 
-// async function showDetails(){
-//     let response= await fetch("https://books-backend.p.goit.global/books/643282b1e85766588626a080");
-//     let data=await response.json();
-//     console.log(data);
+ function showDetails(title,author,image){
+    document.querySelector(".showDetails").style.display="flex";
+    document.querySelector("body").style.overflow = "hidden";
     
-//     return data;
-    
-    
-// }
-// showDetails();
+document.querySelector(".showDetails").innerHTML=`<div class="details-sec">
+            <button class="cancel" onclick="cancel()">X</button>
+            <div><img src="${image}" alt=""><div><h2>${title}</h2><h6>${author}</h6><p>there is no description of this book</p><div class="booklinks"></div></div></div>
+            <button>Add to shopping list</button>
+        </div>`;
 
-// const storedUserInfo = localStorage.getItem("UserInfo");
-
-// if (storedUserInfo) {
-//     const storedUserInfo = JSON.parse(UserInfo);
-
-//     document.getElementById('message').textContent = "User already exist!";
-// }
+}
 
 document.getElementById("signUpBtn").addEventListener("click",(e)=>{
     e.preventDefault();
@@ -184,4 +182,11 @@ document.querySelector(".cross").addEventListener("click",(e)=>{
     e.preventDefault();
     document.querySelector(".login").style.display="none";
 })
+function cancel(){
+    // e.preventDefault();
+    console.log("cancel");
+    
+    document.querySelector(".showDetails").style.display="none";
+    document.querySelector("body").style.overflow = "visible";
+}
 
