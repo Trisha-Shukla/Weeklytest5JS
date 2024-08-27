@@ -29,7 +29,7 @@
             justify-content: flex-end;
             padding: 20px;
         }
-        section{
+        .Visible{
             display: grid;
             /* width: 100vw; */
             grid-template-columns: 400px 1fr;
@@ -76,14 +76,60 @@
             height: 220px;
            
         }
+        .login{
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: aqua;
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .login>div{
+            position: relative;
+            padding: 20px;
+        }
+        .login>div>.cross{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .login>div>form{
+            padding: 20px;
+            display: flex;
+        flex-direction: column;
+        gap: 20px;
+        }
+        .login>div>form>div{
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-sec1">Book</div>
-        <div class="header-sec2"><div class="toggle"><button>Sign up</button></div></div>
+        <div class="header-sec2"><div class="toggle"><button id="signUpBtn">Sign up</button></div></div>
     </header>
-    <section>
+    <section class="login">
+        <div>
+            <button class="cross">X</button>
+            <form action="" id="signupForm">
+            <input type="text" placeholder="Name"  id="username">
+            <input type="text" placeholder="Email" id="email">
+            <input type="password" placeholder="Password" id="password">
+            <button id="signUp/signIn">Sign Up</button>
+            <div><a href="#" id="sign-up">Sign Up  </a>  <a href="#" id="sign-in">Sign In</a></div>
+            <p id="message"></p>
+        </form>
+        </div>
+    </section>
+    <section class="Visible">
     <nav>
         <ul class="sidebar-1">
             <li>All Categories</li>

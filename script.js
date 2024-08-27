@@ -48,7 +48,7 @@ async function updateMainSec() {
         document.querySelector(".book-section").appendChild(categorySection);
 
         let bookArrange = element.books;
-        console.log(bookArrange);
+        // console.log(bookArrange);
 
         // Select the .book-wrap specific to this category section
         const bookWrap = categorySection.querySelector(".book-wrap");
@@ -66,4 +66,122 @@ async function updateMainSec() {
     });
 }
 updateMainSec();
+
+// async function showDetails(){
+//     let response= await fetch("https://books-backend.p.goit.global/books/643282b1e85766588626a080");
+//     let data=await response.json();
+//     console.log(data);
+    
+//     return data;
+    
+    
+// }
+// showDetails();
+
+// const storedUserInfo = localStorage.getItem("UserInfo");
+
+// if (storedUserInfo) {
+//     const storedUserInfo = JSON.parse(UserInfo);
+
+//     document.getElementById('message').textContent = "User already exist!";
+// }
+
+document.getElementById("signUpBtn").addEventListener("click",(e)=>{
+    e.preventDefault();
+    document.querySelector(".login").style.display="flex";
+})
+let defaultSignUp = true;
+
+document.getElementById("signupForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (defaultSignUp) {
+        signUp();
+    } else {
+        signIn();
+    }
+});
+
+function signUp() {
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (!username || !email || !password) {
+        document.getElementById('message').innerText = "All fields are required!";
+        return;
+    }
+
+    let storedData = localStorage.getItem("UserInfo");
+    let storedUsers = [];
+
+    if (storedData) {
+        try {
+            storedUsers = JSON.parse(storedData);
+            if (!Array.isArray(storedUsers)) {
+                storedUsers = [storedUsers];
+            }
+        } catch (e) {
+            console.error("Error parsing JSON from localStorage:", e);
+            storedUsers = [];
+        }
+    }
+
+    let userExists = storedUsers.some(user => user.email === email);
+
+    if (userExists) {
+        document.getElementById('message').innerText = "User already exists!";
+        return;
+    }
+
+    let userInfo = {
+        username: username,
+        email: email,
+        password: password
+    };
+
+    storedUsers.push(userInfo);
+    localStorage.setItem("UserInfo", JSON.stringify(storedUsers));
+    document.getElementById('message').innerText = "User registered successfully!";
+    document.getElementById('signupForm').reset();
+}
+
+document.getElementById("sign-in").addEventListener("click", () => {
+    defaultSignUp = false;
+    document.getElementById("username").style.display = "none";
+    document.getElementById("signUp/signIn").innerText = "Sign In";
+    document.getElementById('message').innerText = "";
+});
+
+document.getElementById("sign-up").addEventListener("click", () => {
+    defaultSignUp = true;
+    document.getElementById("username").style.display = "flex";
+    document.getElementById("signUp/signIn").innerText = "Sign Up";
+    document.getElementById('message').innerText = "";
+});
+
+function signIn() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let storedUsers = JSON.parse(localStorage.getItem("UserInfo")) || [];
+
+    let user = storedUsers.find(user => user.email === email);
+
+    if (user) {
+        if (user.password === password) {
+            document.getElementById('message').textContent = "Login successful! Welcome " + user.username + "!";
+        } else {
+            document.getElementById('message').textContent = "Incorrect password!";
+        }
+    } else {
+        document.getElementById('message').textContent = "User does not exist!";
+    }
+
+    document.getElementById('signupForm').reset();
+}
+
+document.querySelector(".cross").addEventListener("click",(e)=>{
+    e.preventDefault();
+    document.querySelector(".login").style.display="none";
+})
 
