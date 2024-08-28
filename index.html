@@ -47,7 +47,8 @@
             white-space: nowrap;
         } */
         .book-wrap{
-            display: flex;
+            display: grid;
+            grid-template-columns:repeat(5,1fr);
             gap: 45px;
         }
         .category-section{
@@ -156,14 +157,12 @@
     <section class="Visible">
     <nav>
         <ul class="sidebar-1">
-            <li>All Categories</li>
+            <li onclick="updateMainSec()">All Categories</li>
         
     </ul> 
         <div class="sidebar-2"></div>
     </nav>
     <main>
-        <h1>Best Seller Book</h1>
-        <br>
         <div class="book-section">
         </div>
         

@@ -3,7 +3,7 @@ async function updateSidebar() {
     console.log(typeof categoryArray); // Should be an object (array in JavaScript)
 
     categoryArray.forEach(element => {
-        document.querySelector(".sidebar-1").innerHTML += `<li>${element.list_name}</li>`;
+        document.querySelector(".sidebar-1").innerHTML += `<li onclick="showMore('${element.list_name}')">${element.list_name}</li>`;
     });
 }
 
@@ -31,7 +31,7 @@ bookDetails();
 
 async function updateMainSec() {
     let booksArray = await bookDetails(); // Wait for the promise to resolve
-
+    document.querySelector(".book-section").innerHTML="";
     booksArray.forEach(element => {
         // Create a container for each category
         const categorySection = document.createElement("div");
@@ -39,9 +39,10 @@ async function updateMainSec() {
 
         // Add the category name as a heading
         categorySection.innerHTML = `
+        <h1>Best Seller Book</h1>
             <h5>${element.list_name}</h5>
             <div class="book-wrap"></div>
-            <button>See More</button>
+            <button onclick="showMore('${element.list_name}')">See More</button>
         `;
 
         // Append the category section to the main container
@@ -55,8 +56,7 @@ async function updateMainSec() {
 
         // Add books to the specific .book-wrap
         bookArrange.forEach(ele => {
-            let args=ele;
-            console.log(args);
+            // console.log(args);
             
             
             bookWrap.innerHTML += `
@@ -188,5 +188,40 @@ function cancel(){
     
     document.querySelector(".showDetails").style.display="none";
     document.querySelector("body").style.overflow = "visible";
+}
+
+async function showMore(categoryName){
+    // let book="Audio Nonfiction";
+    let response= await fetch(`https://books-backend.p.goit.global/books/category?category=${categoryName}`);
+    let data=await response.json();
+    console.log(data);
+    
+    document.querySelector(".book-section").innerHTML="";
+    let categorySection = document.createElement("div");
+        categorySection.classList.add("category-section");
+
+        
+        console.log("hiiii");
+        // Add the category name as a heading
+        categorySection.innerHTML = `
+        <h1>${categoryName}</h1>
+            <div class="book-wrap"></div>
+        `;
+        document.querySelector(".book-section").appendChild(categorySection);
+        const bookWrap = categorySection.querySelector(".book-wrap");
+        data.forEach((ele)=>{
+            bookWrap.innerHTML += `
+            <div class="book-arrange">
+        
+                <img src="${ele.book_image}" onclick="showDetails('${ele.title}', '${ele.author}', '${ele.book_image}')">
+                <h6>${ele.title}</h6>
+                <h6>${ele.author}</h6>
+            </div>
+        `;
+
+        })
+
+ 
+    
 }
 
